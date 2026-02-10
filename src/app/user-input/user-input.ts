@@ -9,5 +9,17 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
 })
 export class UserInput {
+  public initialInvestment: number;
+  public anualInvetsment: number;
+  public expectedReturn: number;
+  public duration: number;
+
+  public constructor() {
+    this.anualInvetsment = 0;
+    this.initialInvestment = 0;
+    this.expectedReturn = 0;
+    this.duration = 0;
+  }
+
   public onSubmit(): void {}
 }
