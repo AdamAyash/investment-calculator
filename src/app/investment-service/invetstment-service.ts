@@ -10,8 +10,8 @@ export class InvetstmentService {
     let annualData: AnualData[] = [];
     let investmentValue = userInvestmentDataModel.initialInvestment;
 
-    for (let index = 0; index < userInvestmentDataModel.duration; index++) {
-      const year = index + 1;
+    for (let index = 1; index <= userInvestmentDataModel.duration; index++) {
+      const year = index;
       const interestEarnedInYear = investmentValue * (userInvestmentDataModel.expectedReturn / 100);
       investmentValue += interestEarnedInYear + userInvestmentDataModel.anualInvetsment;
       const totalInterest =

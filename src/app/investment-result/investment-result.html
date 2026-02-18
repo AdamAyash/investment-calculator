@@ -1,32 +1,27 @@
 @if (this.isVisiable()) {
   <table>
-    <tr>
-      <thead>
-        Year
-      </thead>
-      <thead>
-        Investment Value
-      </thead>
-      <thead>
-        Interest (Year)
-      </thead>
-      <thead>
-        Total Interest
-      </thead>
-      <thead>
-        Invested Capital
-      </thead>
-    </tr>
+    <thead>
+      <tr>
+        <th>Year</th>
+        <th>Investment Value</th>
+        <th>Interest (Year)</th>
+        <th>Total Interest</th>
+        <th>Invested Capital</th>
+      </tr>
+    </thead>
+
     <tbody>
       @for (anualDataItem of this.anualData; track anualDataItem.Id) {
         <tr>
           <td>{{ anualDataItem.year }}</td>
-          <td>{{ anualDataItem.annualInvestment }}</td>
-          <td>{{ anualDataItem.interest }}</td>
-          <td>{{ anualDataItem.totalInterest }}</td>
-          <td>{{ anualDataItem.totalAmountInvested }}</td>
+          <td>{{ anualDataItem.totalInterest + anualDataItem.totalAmountInvested | currency }}</td>
+          <td>{{ anualDataItem.interest | currency }}</td>
+          <td>{{ anualDataItem.totalInterest | currency }}</td>
+          <td>{{ anualDataItem.totalAmountInvested | currency }}</td>
         </tr>
       }
     </tbody>
   </table>
+} @else {
+  <h4>Please, enter some values and press "Calculate"</h4>
 }
