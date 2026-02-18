@@ -1,19 +1,32 @@
-<table>
-  <tr>
-    <thead>
-      Year
-    </thead>
-    <thead>
-      Investment Value
-    </thead>
-    <thead>
-      Interest (Year)
-    </thead>
-    <thead>
-      Total Interest
-    </thead>
-    <thead>
-      Invested Capital
-    </thead>
-  </tr>
-</table>
+@if (this.isVisiable()) {
+  <table>
+    <tr>
+      <thead>
+        Year
+      </thead>
+      <thead>
+        Investment Value
+      </thead>
+      <thead>
+        Interest (Year)
+      </thead>
+      <thead>
+        Total Interest
+      </thead>
+      <thead>
+        Invested Capital
+      </thead>
+    </tr>
+    <tbody>
+      @for (anualDataItem of this.anualData; track anualDataItem.Id) {
+        <tr>
+          <td>{{ anualDataItem.year }}</td>
+          <td>{{ anualDataItem.annualInvestment }}</td>
+          <td>{{ anualDataItem.interest }}</td>
+          <td>{{ anualDataItem.totalInterest }}</td>
+          <td>{{ anualDataItem.totalAmountInvested }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

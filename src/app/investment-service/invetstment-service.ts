@@ -6,13 +6,8 @@ import { UserInvestmentDataModel } from '../user-input/user-investment-data.mode
   providedIn: 'root',
 })
 export class InvetstmentService {
-  private _annualData: AnualData[] = [];
-
-  public get annualData(): AnualData[] {
-    return this._annualData;
-  }
-
-  public calculateInvestmentResults(userInvestmentDataModel: UserInvestmentDataModel) {
+  public calculateInvestmentResults(userInvestmentDataModel: UserInvestmentDataModel): AnualData[] {
+    let annualData: AnualData[] = [];
     let investmentValue = userInvestmentDataModel.initialInvestment;
 
     for (let index = 0; index < userInvestmentDataModel.duration; index++) {
@@ -23,7 +18,8 @@ export class InvetstmentService {
         investmentValue -
         userInvestmentDataModel.anualInvetsment * year -
         userInvestmentDataModel.initialInvestment;
-      this._annualData.push({
+      annualData.push({
+        Id: index,
         year: year,
         interest: interestEarnedInYear,
         valueEndOfYear: investmentValue,
@@ -34,5 +30,7 @@ export class InvetstmentService {
           userInvestmentDataModel.anualInvetsment * year,
       });
     }
+
+    return annualData;
   }
 }

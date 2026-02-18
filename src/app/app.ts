@@ -3,6 +3,8 @@ import { Header } from './header/header';
 import { UserInput } from './user-input/user-input';
 import { InvestmentResult } from './investment-result/investment-result';
 import { InvetstmentService } from './investment-service/invetstment-service';
+import { UserInvestmentDataModel } from './user-input/user-investment-data.model';
+import { AnualData } from './investment-service/anual-data.model';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,11 @@ import { InvetstmentService } from './investment-service/invetstment-service';
   standalone: true,
 })
 export class App {
-  constructor(private invetstmentService: InvetstmentService) {}
+  public anualData: AnualData[] = [];
 
-  public onCalculateInvestmentResult() {}
+  constructor(private investementService: InvetstmentService) {}
+
+  public onCalculateInvestmentResult(userInvestmentDataModel: UserInvestmentDataModel) {
+    this.anualData = this.investementService.calculateInvestmentResults(userInvestmentDataModel);
+  }
 }

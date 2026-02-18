@@ -1,4 +1,5 @@
 export interface AnualData {
+  Id: number;
   year: number;
   interest: number;
   valueEndOfYear: number;

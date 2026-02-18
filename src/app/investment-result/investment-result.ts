@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { InvetstmentService } from '../investment-service/invetstment-service';
+import { Component, Input } from '@angular/core';
+import { AnualData } from '../investment-service/anual-data.model';
 
 @Component({
   selector: 'app-investment-result',
@@ -8,5 +8,11 @@ import { InvetstmentService } from '../investment-service/invetstment-service';
   styleUrl: './investment-result.css',
 })
 export class InvestmentResult {
-  constructor() {}
+  @Input() public anualData: AnualData[] = [];
+
+  public constructor() {}
+
+  public isVisiable(): boolean {
+    return this.anualData.length > 0;
+  }
 }

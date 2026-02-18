@@ -1,3 +1,3 @@
 <app-header></app-header>
-<app-user-input (calculateInvestmentResult)="onCalculateInvestmentResult()"></app-user-input>
-<app-investment-result></app-investment-result>
+<app-user-input (calculateInvestmentResult)="onCalculateInvestmentResult($event)"></app-user-input>
+<app-investment-result [anualData]="this.anualData"></app-investment-result>
